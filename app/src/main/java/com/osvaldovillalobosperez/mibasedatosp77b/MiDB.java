@@ -14,9 +14,10 @@ public class MiDB extends SQLiteOpenHelper {
             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "usuario TEXT NOT NULL, " +
             "email TEXT NOT NULL, " +
-            "tel TEXT NOT NULL);";
+            "tel TEXT NOT NULL, " +
+            "fecha_nacimiento TEXT NOT NULL);";
 
-    public static final String[] COLUMNS_CONTACTOS = {"_id", "usuario", "email", "tel"};
+    public static final String[] COLUMNS_CONTACTOS = {"_id", "usuario", "email", "tel", "fecha_nacimiento"};
     public static final String TABLE_NAME_CONTACTOS = "contactos";
 
     public MiDB(@Nullable Context context) {

@@ -5,6 +5,7 @@ public class Contacto {
     String usuario;
     String email;
     String tel;
+    String fecha_nacimiento;
 
     public int getId() {
         return id;
@@ -38,10 +39,19 @@ public class Contacto {
         this.tel = tel;
     }
 
-    public Contacto(int id, String usuario, String email, String tel) {
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public Contacto(int id, String usuario, String email, String tel, String fecha_nacimiento) {
         this.id = id;
         this.usuario = usuario;
         this.email = email;
         this.tel = tel;
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 }

@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
                         0,
                         "Osva",
                         "s15120062@alumnos.itsur.edu.mx",
-                        "4451597776"
+                        "4451597776",
+                        "10/12/1996"
                 )
         );
 
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                         0,
                         "Jesús",
                         "s29823933@alumnos.itsur.edu.mx",
-                        "4452880110"
+                        "4452880110",
+                        "21/01/1997"
                 )
         );
 

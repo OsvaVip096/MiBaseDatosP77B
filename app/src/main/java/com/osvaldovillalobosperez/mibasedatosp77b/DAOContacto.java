@@ -21,6 +21,7 @@ public class DAOContacto {
         cv.put(MiDB.COLUMNS_CONTACTOS[1], contacto.getUsuario());
         cv.put(MiDB.COLUMNS_CONTACTOS[2], contacto.getEmail());
         cv.put(MiDB.COLUMNS_CONTACTOS[3], contacto.getTel());
+        cv.put(MiDB.COLUMNS_CONTACTOS[4], contacto.getFecha_nacimiento());
         return _sqlSqLiteDatabase.insert(MiDB.TABLE_NAME_CONTACTOS, null, cv);
     }
 
@@ -32,7 +33,7 @@ public class DAOContacto {
             lst = new ArrayList<Contacto>();
             do {
                 Contacto ctc = new Contacto(c.getInt(0), c.getString(1), c.getString(2),
-                        c.getString(3));
+                        c.getString(3), c.getString(4));
                 lst.add(ctc);
             } while (c.moveToNext());
         }

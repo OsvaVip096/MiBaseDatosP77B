@@ -25,6 +25,11 @@ public class DAOContacto {
         return _sqlSqLiteDatabase.insert(MiDB.TABLE_NAME_CONTACTOS, null, cv);
     }
 
+    // Ingresar el dato que se va a eliminar...
+    public int delete(Contacto contacto) {
+        return 0;
+    }
+
     public List<Contacto> getAll() {
         List<Contacto> lst = null;
         Cursor c = _sqlSqLiteDatabase.query(MiDB.TABLE_NAME_CONTACTOS, MiDB.COLUMNS_CONTACTOS,

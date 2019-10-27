@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/txtUsuarioCrear"
+        android:id="@+id/txtUsuarioEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -14,7 +15,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtEmailCrear"
+        android:id="@+id/txtEmailEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
@@ -23,7 +24,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtTelefonoCrear"
+        android:id="@+id/txtTelefonoEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -32,7 +33,7 @@
         android:inputType="phone" />
 
     <EditText
-        android:id="@+id/txtFechaNacimientoCrear"
+        android:id="@+id/txtFechaNacimientoEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -41,14 +42,14 @@
         android:inputType="date" />
 
     <Button
-        android:id="@+id/btnAgregarCrear"
+        android:id="@+id/btnActualizarEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/agregar" />
+        tools:text="@string/actualizar" />
 
     <Button
-        android:id="@+id/btnCancelarCrear"
+        android:id="@+id/btnCancelarEditar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

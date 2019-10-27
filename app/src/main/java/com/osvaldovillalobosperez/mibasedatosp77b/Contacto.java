@@ -54,4 +54,8 @@ public class Contacto {
         this.tel = tel;
         this.fecha_nacimiento = fecha_nacimiento;
     }
+
+    public String toString() {
+        return usuario + "\n" + email;
+    }
 }

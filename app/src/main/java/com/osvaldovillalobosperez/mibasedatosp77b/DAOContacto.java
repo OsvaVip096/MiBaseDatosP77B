@@ -32,14 +32,14 @@ public class DAOContacto {
         cv.put(MiDB.COLUMNS_CONTACTOS[3], contacto.getTel());
         cv.put(MiDB.COLUMNS_CONTACTOS[4], contacto.getFecha_nacimiento());
 
-        String idObjetivo = "id = ?";
+        String idObjetivo = "_id = ?";
         String[] argumentosParaActualizar = {String.valueOf(contacto.getId())};
         return _sqlSqLiteDatabase.update(MiDB.TABLE_NAME_CONTACTOS, cv, idObjetivo, argumentosParaActualizar);
     }
 
     public int delete(Contacto contacto) {
         String[] argumentosParaEliminar = {String.valueOf(contacto.getId())};
-        return _sqlSqLiteDatabase.delete(MiDB.TABLE_NAME_CONTACTOS, "id = ?", argumentosParaEliminar);
+        return _sqlSqLiteDatabase.delete(MiDB.TABLE_NAME_CONTACTOS, "_id = ?", argumentosParaEliminar);
     }
 
     public List<Contacto> getAll() {

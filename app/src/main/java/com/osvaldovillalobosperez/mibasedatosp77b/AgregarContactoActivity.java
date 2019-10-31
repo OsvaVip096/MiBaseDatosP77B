@@ -6,26 +6,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AgregarContacto extends AppCompatActivity {
+public class AgregarContactoActivity extends AppCompatActivity {
     EditText etUsuarioA, etMailA, etTelefonoA, etFechaNacA;
     Button btnAgregarA, btnCancelarA;
     DAOContacto dao;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        etUsuarioA.findViewById(R.id.txtUsuarioCrear);
-        etMailA.findViewById(R.id.txtEmailCrear);
-        etTelefonoA.findViewById(R.id.txtTelefonoCrear);
-        etFechaNacA.findViewById(R.id.txtFechaNacimientoCrear);
-        btnAgregarA.findViewById(R.id.btnAgregarCrear);
-        btnCancelarA.findViewById(R.id.btnCancelarCrear);
+        etUsuarioA = findViewById(R.id.txtUsuarioCrear);
+        etMailA = findViewById(R.id.txtEmailCrear);
+        etTelefonoA = findViewById(R.id.txtTelefonoCrear);
+        etFechaNacA = findViewById(R.id.txtFechaNacimientoCrear);
+        btnAgregarA = findViewById(R.id.btnAgregarCrear);
+        btnCancelarA = findViewById(R.id.btnCancelarCrear);
 
-        dao = new DAOContacto(AgregarContacto.this);
+        dao = new DAOContacto(AgregarContactoActivity.this);
 
         btnAgregarA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,7 @@ public class AgregarContacto extends AppCompatActivity {
                 long id = dao.insert(nuevoContacto);
 
                 if (id == -1) {
-                    Toast.makeText(AgregarContacto.this, "Error al guardar.\nIntentar de nuevo.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AgregarContactoActivity.this, "Error al guardar.\nIntentar de nuevo.", Toast.LENGTH_LONG).show();
                 } else {
                     finish();
                 }

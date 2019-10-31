@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EditarContacto extends AppCompatActivity {
+public class EditarContactoActivity extends AppCompatActivity {
     EditText etUsuarioE, etMailE, etTelefonoE, etFechaNacE;
     Button btnActualizarE, btnCancelarE;
     Contacto contacto;
@@ -32,9 +32,9 @@ public class EditarContacto extends AppCompatActivity {
             return;
         }
 
-        daoContacto = new DAOContacto(EditarContacto.this);
+        daoContacto = new DAOContacto(EditarContactoActivity.this);
 
-        int idContacto = extras.getInt("_id");
+        final int idContacto = extras.getInt("_id");
         String usuarioContacto = extras.getString("usuario");
         String emailContacto = extras.getString("email");
         String telefonoContacto = extras.getString("tel");
@@ -93,10 +93,10 @@ public class EditarContacto extends AppCompatActivity {
                 }
 
                 // Actualizamos los datos de contacto.
-                Contacto contactoActualizado = new Contacto(0, nuevoUsuario, nuevoMail, nuevoTelefono, nuevaFechaNac);
+                Contacto contactoActualizado = new Contacto((idContacto), nuevoUsuario, nuevoMail, nuevoTelefono, nuevaFechaNac);
                 int filasModificadas = daoContacto.update(contactoActualizado);
                 if (filasModificadas != 1) {
-                    Toast.makeText(EditarContacto.this, "Error al actualizar el contacto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarContactoActivity.this, "Error al actualizar el contacto", Toast.LENGTH_SHORT).show();
                 } else {
                     finish();
                 }

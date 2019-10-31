@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AgregarContacto">
+        <activity android:name=".AgregarContactoActivity">
 
         </activity>
-        <activity android:name=".EditarContacto">
+        <activity android:name=".EditarContactoActivity">
 
         </activity>
         <activity android:name=".Contacto">

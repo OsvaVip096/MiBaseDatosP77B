@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 List<Contacto> importar = dao.getAll();
                 Contacto contactoSeleccionado = importar.get(position);
-                Intent intent = new Intent(MainActivity.this, EditarContacto.class);
+                Intent intent = new Intent(MainActivity.this, EditarContactoActivity.class);
                 intent.putExtra("_id", contactoSeleccionado.getId());
                 intent.putExtra("usuario", contactoSeleccionado.getUsuario());
                 intent.putExtra("email", contactoSeleccionado.getEmail());
@@ -87,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dao.delete(contactoParaEliminar);
-                                refrescarLista(c);
+
+                                Intent reconstruir = getIntent();
+                                finish();
+                                startActivity(reconstruir);
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .setTitle("Confirmar")
-                        .setMessage("¿Eliminar a la mascota " + contactoParaEliminar.getUsuario() + "?")
+                        .setMessage("¿Eliminar al contacto " + contactoParaEliminar.getUsuario() + "?")
                         .create();
                 dialog.show();
                 return true;
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AgregarContacto.class);
+                Intent intent = new Intent(MainActivity.this, AgregarContactoActivity.class);
                 startActivity(intent);
             }
         });

@@ -4,9 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -19,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     Button button;
+    EditText txtFiltro;
+    SimpleCursorAdapter adp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.Lv);
         button = findViewById(R.id.btnCrear);
+        txtFiltro = findViewById(R.id.txtBuscar);
         /*dao.insert(
                 new Contacto(
                         0,
@@ -114,10 +121,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        txtFiltro.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (MainActivity.this).adp.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        adp.setFilterQueryProvider(new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence constraint) {
+                return dao.filtro(constraint.toString(), "usuario");
+            }
+        });
     }
 
     public void refrescarLista(Cursor c) {
-        SimpleCursorAdapter adp = new SimpleCursorAdapter(
+        adp = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_expandable_list_item_2,
                 c,

@@ -3,6 +3,7 @@ package com.osvaldovillalobosperez.mibasedatosp77b;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -40,6 +41,21 @@ public class DAOContacto {
     public int delete(Contacto contacto) {
         String[] argumentosParaEliminar = {String.valueOf(contacto.getId())};
         return _sqlSqLiteDatabase.delete(MiDB.TABLE_NAME_CONTACTOS, "_id = ?", argumentosParaEliminar);
+    }
+
+    public Cursor filtro(String inputText, String filterColumn) throws SQLException {
+        Cursor row = null;
+        String query = "SELECT * FROM " + MiDB.TABLE_NAME_CONTACTOS;
+        if (inputText == null || inputText.length() == 0) {
+            row = _sqlSqLiteDatabase.rawQuery(query, null);
+        } else {
+            query = "SELECT * FROM " + MiDB.TABLE_NAME_CONTACTOS + " WHERE " + filterColumn + " like '%" + inputText + "%'";
+            row = _sqlSqLiteDatabase.rawQuery(query, null);
+        }
+        if (row != null) {
+            row.moveToFirst();
+        }
+        return row;
     }
 
     public List<Contacto> getAll() {

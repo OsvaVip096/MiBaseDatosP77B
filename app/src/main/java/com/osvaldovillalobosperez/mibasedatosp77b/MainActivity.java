@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView lv;
-    Button button;
+    Button btnCrear, btnBuscar;
     EditText txtFiltro;
     SimpleCursorAdapter adp;
 
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         final DAOContacto dao = new DAOContacto(this);
 
         lv = findViewById(R.id.Lv);
-        button = findViewById(R.id.btnCrear);
+        btnCrear = findViewById(R.id.btnCrear);
+        btnBuscar = findViewById(R.id.btnBuscar);
         txtFiltro = findViewById(R.id.txtBuscar);
         /*dao.insert(
                 new Contacto(
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Listener para el botón agregar.
-        button.setOnClickListener(new View.OnClickListener() {
+        btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AgregarContactoActivity.class);
@@ -122,7 +123,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        txtFiltro.addTextChangedListener(new TextWatcher() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String obtenerTexto = txtFiltro.getText().toString();
+                Cursor filtrarBusqueda = dao.filter(obtenerTexto, "usuario");
+                refrescarLista(filtrarBusqueda);
+            }
+        });
+
+        /*txtFiltro.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -137,14 +147,14 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
 
-        adp.setFilterQueryProvider(new FilterQueryProvider() {
+        /*adp.setFilterQueryProvider(new FilterQueryProvider() {
             @Override
             public Cursor runQuery(CharSequence constraint) {
-                return dao.filtro(constraint.toString(), "usuario");
+                return dao.filter(constraint.toString(), "usuario");
             }
-        });
+        });*/
     }
 
     public void refrescarLista(Cursor c) {

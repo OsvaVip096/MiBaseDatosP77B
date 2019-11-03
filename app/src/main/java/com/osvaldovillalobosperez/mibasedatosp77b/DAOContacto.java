@@ -43,7 +43,7 @@ public class DAOContacto {
         return _sqlSqLiteDatabase.delete(MiDB.TABLE_NAME_CONTACTOS, "_id = ?", argumentosParaEliminar);
     }
 
-    public Cursor filtro(String inputText, String filterColumn) throws SQLException {
+    public Cursor filter(String inputText, String filterColumn) throws SQLException {
         Cursor row = null;
         String query = "SELECT * FROM " + MiDB.TABLE_NAME_CONTACTOS;
         if (inputText == null || inputText.length() == 0) {
